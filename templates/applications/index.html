@@ -9,7 +9,7 @@
     <div class="span3">
             <ul data-spy="affix" data-offset-top="200px" class="nav nav-list bs-docs-sidenav affix-top">
                 {% for c in categories %}
-                <li {% if active_cat.short_name==c.short_name%}class="active"{% endif %}><a href="{{url_for('app.app_cat_index', category=c.short_name)}}"><i class="icon-chevron-right"></i> {{ c.name }}</a></li>
+                <li {% if active_cat.short_name==c.short_name%}class="active"{% endif %}><a href="{{url_for('app.app_cat_index', category=c.short_name)}}"><i class="icon-chevron-right"></i> {{ _(c.name) }}</a></li>
                 {% endfor %}
                 {% if current_user.is_authenticated() and current_user.admin %}
                 <li {% if active_cat.short_name=="draft"%}class="active"{% endif %}><a href="{{url_for('app.draft')}}"><i class="icon-chevron-right"></i> {{ _('Draft') }}</a></li>
@@ -18,12 +18,12 @@
     </div>
     <div class="span9">
             <div id="sorts" class="btn-group pull-right" style="margin-top:12px;">
-                <button class="btn dropdown-toggle" data-toggle="dropdown" data-sort-value="original-order">Order by <span id="order">name</span> <span class="caret"></span></button>
+                <button class="btn dropdown-toggle" data-toggle="dropdown" data-sort-value="original-order">{{ _('Order by') }} <span id="order">{{ _('name') }}</span> <span class="caret"></span></button>
               <ul class="dropdown-menu" style="top:35px;">
-                  <li><a href="#" data-sort-value="original-order">name</a></li>
-                  <li><a href="#" data-sort-value="date">date</a></li>
-                  <li><a href="#" data-sort-value="activity">activity</a></li>
-                  <li><a href="#" data-sort-value="progress">progress</a></li>
+                  <li><a href="#" data-sort-value="original-order">{{ _('name') }}</a></li>
+                  <li><a href="#" data-sort-value="date">{{ _('date') }}</a></li>
+                  <li><a href="#" data-sort-value="activity">{{ _('activity') }}</a></li>
+                  <li><a href="#" data-sort-value="progress">{{ _('progress') }}</a></li>
             </ul>
             </div>
 
@@ -39,7 +39,7 @@
             <h2>{{ _('Work in progress projects') }}</h2>
             {% else %}
             <h1>
-                <i class="icon-th"></i> {{pagination.total_count}} {{ active_cat.name }} Projects</h1>
+                <i class="icon-th"></i> {{pagination.total_count}} {{ active_cat.name }} {{ _('Project(s)') }}</h1>
             <h2>{{ active_cat.description }}</h2>
             {% endif %}
 
@@ -54,7 +54,7 @@
             {% endif %}
         {% else %}
             <h1>
-                <i class="icon-th"></i> {{pagination.total_count}} {{ active_cat.name }} Projects</h1>
+                <i class="icon-th"></i> {{pagination.total_count}} {{ _('Project(s)') }}</h1> <!-- {{ active_cat.name }} -->
             <h2>{{_('Sorry, there are no published projects for this category yet')}}</h2>
         {% endif %}
     </div>
@@ -82,10 +82,13 @@ $( function() {
     var sortValue = $(this).attr('data-sort-value');
     $container.isotope({ sortBy: sortValue });
     if (sortValue == 'original-order') {
-        $("#order").text('name');
-    }
-    else {
-        $("#order").text(sortValue);
+        $("#order").text('{{ _('name') }}');
+    } else if (sortValue == 'date') {
+        $("#order").text('{{ _('date') }}');
+   } else if (sortValue == 'activity') {
+	$("#order").text('{{ _('activity') }}');
+   } else {
+	$("#order").text('{{ _('progress') }}');
     }
   });
 
