@@ -32,7 +32,7 @@
         {% for c in categories %}
         <div class="row-fluid">
             <div class="span5">
-                <h2>{{c.name}} <small>({{ n_apps_per_category[c.short_name]}} apps)</small></h2>
+                <h2>{{ _(c.name) }} <small>({{ n_apps_per_category[c.short_name]}} apps)</small></h2>
             </div>
             <div class="span6">
                 <div class="btn-group">

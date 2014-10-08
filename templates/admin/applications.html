@@ -15,7 +15,7 @@
         <ul class="nav nav-tabs">
             {% for c in categories %}
             <li {% if loop.first %}class="active"{% endif %}>
-            <a href="#{{c.short_name}}" data-toggle="tab">{{c.name}}</a>
+            <a href="#{{c.short_name}}" data-toggle="tab">{{ _(c.name) }}</a>
             </li>
             {% endfor %}
         </ul>
