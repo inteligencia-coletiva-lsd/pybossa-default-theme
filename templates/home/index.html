@@ -42,8 +42,8 @@
         <h2 align="center"><i class="icon-th"></i>{{ _('Most Active Projects') }}</h2>
         <div class="row">
           {% for app in top_apps %}
-          <div class="span3">
-            <div class="app box">
+          	<div class="span3">
+		    <div class="app box">
                 {% if app.info.thumbnail %}
                 <a href="{{url_for('app.details', short_name=app.short_name)}}" class="image" style="background-image:url({{helper.render_url_thumbnail(app, upload_method)}})"></a>
                 {% else %}
@@ -54,6 +54,7 @@
                 <p><a href="{{url_for('app.details',short_name=app.short_name)}}" class="btn btn-mini btn-info">Info</a> <a href="{{url_for('app.presenter',short_name=app.short_name)}}" class="btn btn-mini btn-primary">{{ _('Start') }}</a></p>
             </div>
           </div>
+	  
           {% endfor %}
           {% for i in range(4-top_apps|count)%}
           <div class="span3">
@@ -69,14 +70,14 @@
       
       {% if top_users %}
       <section id="top_users" class="grey">
-        <h2><i class="icon-group"></i>{{ _('Most Active Volunteers') }}</h2>
+        <h2 align="center"><i class="icon-group"></i>{{ _('Most Active Volunteers') }}</h2>
         <ul class="users">
             {% for user in top_users %}
           <li>
           <a href="{{url_for('account.profile', name=user.name)}}" data-content="
                 <strong>{{_('Joined')}}:</strong> {{user.created[0:10]}} 
                 <br/>
-                <strong>{{_('Submitted Tasks')}}:</strong> {{user.task_runs}}
+                <strong>{{_('Contributed Tasks')}}:</strong> {{user.task_runs}}
                 " rel="popover" data-original-title="<strong>{{user.fullname}}</strong>">
                 {{ account_helper.render_user_thumbnail(user, upload_method, style="height:90px; width:90px;") }}
            </a>

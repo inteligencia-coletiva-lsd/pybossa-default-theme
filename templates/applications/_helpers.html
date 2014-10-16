@@ -56,8 +56,8 @@
         {% endif %}
         <li><strong><i class="icon-info-sign"></i> {{ _('Description') }}</strong>: {{ app['description'] }}</li>
         <li><strong><i class="icon-ok"></i> {{ _('Creation Date') }}</strong>: {{ app.created[0:10] }}</li>
-        <li><strong><i class="icon-time"></i> {{ _('Last Activity') }}</strong>: {{ last_activity}}</li>
-        <li><strong><i class="icon-cogs"></i> {{ _('Overall progress') }}</strong>: {{ overall_progress | round | int }}% {{ _('completed') }}</li>
+        <li><strong><i class="icon-time"></i> {{ _('Last Activity') }}</strong>: {{ _('last_activity') }}</li>
+        <li><strong><i class="icon-cogs"></i> {{ _('Overall progress') }}</strong>: {{ overall_progress | round | int }}% {{ _('completed') }} </li>
         <li><strong><i class="icon-tasks"></i> <a href="{{url_for('app.tasks',short_name=app.short_name)}}">{{ _('Tasks') }}</strong></a> ({{ n_tasks }})</li>
         {% if not current_user.is_anonymous() %}
         <li>{% if app.hidden == 1 %}
@@ -125,10 +125,10 @@
             <p style="margin:0"><strong><i class="icon-info-sign"></i> {{ _('Description') }}</strong>: {{ data.app.description }}</p>
             <p style="margin:0"><strong><i class="icon-ok"></i> {{ _('Creation Date') }}</strong>: <span class="date">{{ data.app.created[0:10] }}</span></p>
             {% if data.app.last_activity_raw != None %}
-            <p style="margin:0"><strong><i class="icon-time"></i> {{ _('Last Activity') }}</strong>: {{ data.last_activity}}</p>
-            <span class="activity" style="display:none;">{{data.last_activity_raw}}</span>
+            <p style="margin:0"><strong><i class="icon-time"></i> {{ _('Last Activity') }}</strong>: {{ data.last_activity.split(' ')[0] }} {{ _( data.last_activity.split(' ')[1] + " " + data.last_activity.split(' ')[2]) }} </p> <!-- _(data.last_activity.split(' ')[1] + " " + data.last_activity.split(' ')[2] ) -->
+            <span class="activity" style="display:none;">{{ _(data.last_activity_raw) }}</span>
             {% endif %}
-            <p style="margin:0"><strong><i class="icon-cogs"></i> {{ _('Overall progress') }}</strong>: <span class="progress">{{ data.overall_progress | round | int }}</span>% completed</p>
+            <p style="margin:0"><strong><i class="icon-cogs"></i> {{ _('Overall progress') }}</strong>: <span class="progress">{{ data.overall_progress | round | int }}</span>% {{ _('completed') }}</p>
             {% if data.app.owner == current_user.fullname %}
             <p style="margin:0"><strong><i class="icon-user"></i> {{ _('Created by') }}</strong>: {{ _('Me') }}</p>
             {% else %}
@@ -258,7 +258,7 @@ function imgError(image) {
     {{ url_for('uploads.uploaded_file', filename=(app.info.container + '/' + app.info.thumbnail))}}
     {% endif %}
 {% elif app.info.thumbnail %}
-    {{app.info.thumbnail}}"
+    {{app.info.thumbnail}}
 {% else %}
 {{url_for('static', filename='img/placeholder.project.png')}}"
 {% endif %}

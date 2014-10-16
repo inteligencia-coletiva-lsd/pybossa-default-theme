@@ -39,8 +39,8 @@
             <h2>{{ _('Work in progress projects') }}</h2>
             {% else %}
             <h1>
-                <i class="icon-th"></i> {{pagination.total_count}} {{ active_cat.name }} {{ _('Project(s)') }}</h1>
-            <h2>{{ active_cat.description }}</h2>
+                <i class="icon-th"></i> {{pagination.total_count}} {{ _('Project(s)') }}</h1>
+            <h2>{{ _(active_cat.description) }}</h2>
             {% endif %}
 
 
