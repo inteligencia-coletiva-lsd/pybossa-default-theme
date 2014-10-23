@@ -21,7 +21,8 @@
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
                 {{ helper.render_user_thumbnail(current_user, upload_method)}}
                 </div>
-            {{ render_field(upload_form.avatar, onchange="previewImage()") }}
+		<!-- onchange="previewImage()") -->
+            {{ render_field(upload_form.avatar) }}
             {{ upload_form.x1 }}
             {{ upload_form.y1 }}
             {{ upload_form.x2 }}
