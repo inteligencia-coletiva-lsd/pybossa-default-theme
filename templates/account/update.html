@@ -22,7 +22,7 @@
                 {{ helper.render_user_thumbnail(current_user, upload_method)}}
                 </div>
 		<!-- onchange="previewImage()") -->
-            {{ render_field(upload_form.avatar) }}
+            {{ render_field(upload_form.avatar, onchange="previewImage()") }}
             {{ upload_form.x1 }}
             {{ upload_form.y1 }}
             {{ upload_form.x2 }}
