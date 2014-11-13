@@ -16,12 +16,12 @@
         </section>
         {% if apps_created %}
         <section id="created-apps" style="margin-top:10px;">
-            {{render_grid_apps(apps_created, "Created Projects", upload_method)}}
+            {{ render_grid_apps(apps_created, _('Created Projects'), upload_method) }}
         </section>
         {% endif %}
         {% if apps %}
         <section id="contributed-apps" style="margin-top:10px;">
-            {{render_grid_apps(apps, "Contributions", upload_method)}}
+            {{render_grid_apps(apps, _('Contributions'), upload_method)}}
         </section>
         {% endif %}
         {% endif %}
