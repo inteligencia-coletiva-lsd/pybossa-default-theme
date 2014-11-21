@@ -23,6 +23,16 @@ sup{top:-0.5em;}
 sub{bottom:-0.25em;}
 img{max-width:100%;width:auto\9;height:auto;vertical-align:middle;border:0;-ms-interpolation-mode:bicubic;}
 #map_canvas img{max-width:none;}
+.pic{ opacity:1; filter:alpha(opacity=100);}
+.pic:hover{ opacity:0.6; filter:alpha(opacity=60);}
+.streetViewChoice {
+  cursor: pointer;
+  border: 2px solid #fff;
+}
+.streetViewChoice:hover {
+  cursor: pointer;
+  border: 2px solid #FA2D1C;
+}
 button,input,select,textarea{margin:0;font-size:100%;vertical-align:middle;}
 button,input{*overflow:visible;line-height:normal;}
 button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0;}
