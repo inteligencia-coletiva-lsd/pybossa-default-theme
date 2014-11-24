@@ -42,6 +42,7 @@
         {{ render_field(form.allow_anonymous_contributors) }}
         {{ render_field(form.password) }}
         {{ render_field(form.hidden, tooltip=_('Do you want to hide your project?')) }}
+	
         <div class="form-actions">
           <button type="submit" name='btn' value="Save the changes" class="btn btn-primary">{{_('Save the changes')}}</button>
           <a href="{{url_for('app.settings', short_name=app.short_name)}}" class="btn">{{_('Cancel')}}</a>
@@ -52,6 +53,21 @@
 </div>
 <script>
     $("i[rel='tooltip']").tooltip();
+    var isAdmin = "{{current_user.admin}}";
+    //var dat = document.getElementsByClassName('control-label');
+    //for(var i = 0; i < dat.length; i++){
+    //	if (dat[i].getAttribute("for") == 'category'){
+//	    alert("Achei!");
+//	    dat[i].style.visibility = "hidden";
+//	    dat[i].disabled = true;
+//	}
+ //  }
+  //  alert("Testando" + dat[0].for);
+    if (isAdmin == "False") {
+	var categoryElement = document.getElementById('category');
+	categoryElement.disabled = true;
+	//categoryElement.style.visibility = "hidden";
+    }
 </script>
 <script src="{{url_for('static', filename='js/image_crop.js')}}" type="text/javascript"></script>
 {{ helper.broken_image() }}
