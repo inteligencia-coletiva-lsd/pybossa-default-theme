@@ -56,7 +56,7 @@
         {% endif %}
         <li><strong><i class="icon-info-sign"></i> {{ _('Description') }}</strong>: {{ app['description'] }}</li>
         <li><strong><i class="icon-ok"></i> {{ _('Creation Date') }}</strong>: {{ app.created[0:10] }}</li>
-        <li><strong><i class="icon-time"></i> {{ _('Last Activity') }}</strong>: {{ last_activity}}</li>
+        <!-- <li><strong><i class="icon-time"></i> {{ _('Last Activity') }}</strong>: {{ last_activity}}</li> -->
         <li><strong><i class="icon-cogs"></i> {{ _('Overall progress') }}</strong>: {{ overall_progress | round | int }}% {{ _('completed') }}</li>
         <li><strong><i class="icon-tasks"></i> <a href="{{url_for('app.tasks',short_name=app.short_name)}}">{{ _('Tasks') }}</strong></a> ({{ n_tasks }})</li>
         {% if not current_user.is_anonymous() %}
@@ -125,8 +125,8 @@
             <p style="margin:0"><strong><i class="icon-info-sign"></i> {{ _('Description') }}</strong>: {{ app.description }}</p>
             <p style="margin:0"><strong><i class="icon-ok"></i> {{ _('Creation Date') }}</strong>: <span class="date">{{ app.created[0:10] }}</span></p>
             {% if app.last_activity_raw != None %}
-            <p style="margin:0"><strong><i class="icon-time"></i> {{ _('Last Activity') }}</strong>: {{ app.last_activity}}</p>
-            <span class="activity" style="display:none;">{{app.last_activity_raw}}</span>
+            <!-- <p style="margin:0"><strong><i class="icon-time"></i> {{ _('Last Activity') }}</strong>: {{ app.last_activity}}</p>
+            <span class="activity" style="display:none;">{{app.last_activity_raw}}</span> -->
             {% endif %}
             <p style="margin:0"><strong><i class="icon-cogs"></i> {{ _('Overall progress') }}</strong>: <span class="progress">{{ app.overall_progress | round | int }}</span>% {{ _('completed') }}</p>
             {% if app.owner == current_user.fullname %}
