@@ -429,6 +429,7 @@ ul.users li a {
   body {
     padding-top: 0px;
   }
+
   .navbar .container {
     width: 724px !important;
   }
@@ -466,13 +467,17 @@ ul.users li a {
   }
 }
 @media (max-width: 767px) {
-  .navbar .container {
+.navbar .container {
     width: auto !important;
   }
   .navbar-inner {
     padding-left: 15px !important;
     padding-right: 15px !important;
   }
+
+  .container{
+        width: auto !important;
+   }
   .banner .featured {
     display: none;
   }
